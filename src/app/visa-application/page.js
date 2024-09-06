@@ -1,4 +1,4 @@
-'use client';  // Mark this as a client component
+'use client';
 
 import { useState } from 'react';
 
@@ -22,9 +22,41 @@ export default function VisaApplication() {
     setFormData((prev) => ({ ...prev, [name]: files[0] }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);  // For now, simply log the form data. You can add backend integration here.
+
+    const formDataToSend = {
+      name: formData.name,
+      dob: formData.dob,
+      nationality: formData.nationality,
+      travelHistory: formData.travelHistory,
+    };
+
+    try {
+      const res = await fetch('/api/visa-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToSend),
+      });
+
+      if (res.ok) {
+        setFormData({
+          name: '',
+          dob: '',
+          nationality: '',
+          passportBio: null,
+          passportPhoto: null,
+          travelHistory: '',
+        });
+        console.log('Application submitted successfully');
+      } else {
+        console.error('Failed to submit application');
+      }
+    } catch (error) {
+      console.error('Error submitting the application:', error);
+    }
   };
 
   return (
@@ -69,6 +101,7 @@ export default function VisaApplication() {
             />
           </div>
 
+          {/* Keep the file upload inputs but do not send them to the server */}
           <div className="mb-4">
             <label className="block text-gray-700">Passport Bio Page</label>
             <input
@@ -76,7 +109,6 @@ export default function VisaApplication() {
               name="passportBio"
               onChange={handleFileChange}
               className="w-full p-3 border rounded-lg"
-              required
             />
           </div>
 
@@ -87,7 +119,6 @@ export default function VisaApplication() {
               name="passportPhoto"
               onChange={handleFileChange}
               className="w-full p-3 border rounded-lg"
-              required
             />
           </div>
 
