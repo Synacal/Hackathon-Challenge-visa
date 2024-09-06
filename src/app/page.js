@@ -16,10 +16,17 @@ export default function Home() {
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center space-y-6">
             <img src="/images/homelogo.png" alt="Logo" className="h-20" />
             
-            
-            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600">
-              Explore Sri Lanka
-            </button>
+            <div className="space-y-4">
+              <button className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600">
+                Explore Sri Lanka
+              </button>
+              {/* Visa Application CTA Button */}
+              <a href="/visa-application">
+                <button className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600">
+                  Apply for Visa
+                </button>
+              </a>
+            </div>
           </div>
         </section>
 
