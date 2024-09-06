@@ -8,18 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@heroicons/react": "^2.1.5",
+    "@heroicons/react": "^2.0.13",
+    "axios": "^1.7.7",
     "busboy": "^1.6.0",
     "formidable": "^3.5.1",
-=======
-    "@heroicons/react": "^1.0.6",
-    "axios": "^1.7.7",
->>>>>>> 14f8f5ed7262ff43ed78d267c8ad584b3c8a04fd
     "framer-motion": "^5.0.0",
-    "fs": "^0.0.1-security",
+    "fs": "0.0.1-security",
     "mongodb": "^6.8.0",
-    "mongoose": "^8.6.1",
+    "mongoose": "^6.11.1",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
